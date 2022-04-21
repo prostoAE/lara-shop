@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
-    Route::get('/show-product', function () {
-        return view('admin.product.show');
+    Route::get('/add-product', function () {
+        return view('admin.product.add');
     });
 });
