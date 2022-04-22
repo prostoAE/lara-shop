@@ -38,175 +38,43 @@
                             <!-- Default box -->
                             <div class="card">
                                 <div class="card-header">
-                                    <button type="button" class="btn btn-outline-info btn-sm">Add new</button>
+                                    <a href="{{route('product.add')}}" class="btn btn-outline-info btn-sm">Add new</a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Category id</th>
+                                            <th>Regular price</th>
+                                            <th>Sale price</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                    Edit
-                                                </button>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-outline-danger btn-xs">
-                                                    Delete
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        @foreach($products as $product)
+                                            @php /** @var \App\Models\Product $product */ @endphp
+                                            <tr>
+                                                <td>{{$product->id}}</td>
+                                                <td>{{$product->name}}</td>
+                                                <td>{{$product->category_id}}</td>
+                                                <td>{{$product->regular_price}}</td>
+                                                <td>{{$product->sale_price}}</td>
+                                                <td>
+                                                    <a href="{{route('product.edit', $product->id)}}" type="button" class="btn btn-block btn-outline-warning btn-xs">
+                                                        Edit
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <button type="button" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                         <tfoot>
                                         <tr>

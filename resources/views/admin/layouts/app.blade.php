@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
+    <!-- Ekko Lightbox -->
+    <link rel="stylesheet" href="{{asset('plugins/ekko-lightbox/ekko-lightbox.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 </head>
@@ -30,6 +32,8 @@
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- bs-custom-file-input -->
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<!-- Ekko Lightbox -->
+<script src="{{asset('plugins/ekko-lightbox/ekko-lightbox.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 
@@ -41,6 +45,13 @@
         $('#summernote').summernote();
 
         bsCustomFileInput.init();
+
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
     })
 </script>
 
