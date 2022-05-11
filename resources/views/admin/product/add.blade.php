@@ -45,13 +45,13 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Product name</label>
-                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Product name">
+                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Product name" value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Product Foto</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="product_thumbnail" class="custom-file-input" id="productFoto">
+                                            <input type="file" name="product_thumbnail" class="custom-file-input" id="productFoto" value="{{old('product_thumbnail')}}">
                                             <label class="custom-file-label" for="productFoto">Choose file</label>
                                         </div>
                                     </div>
@@ -66,7 +66,7 @@
                                     <label>Gallery</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" name="gallery[]" class="custom-file-input" id="exampleInputFile" multiple>
+                                            <input type="file" name="gallery[]" class="custom-file-input" id="exampleInputFile" multiple value="{{old('gallery')}}">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
@@ -124,8 +124,8 @@
                                         <div class="form-group">
                                             <label>Stock status</label>
                                             <select name="stock_status" class="select2" data-placeholder="Select a stock status" style="width: 100%;">
-                                                <option>In Stock</option>
-                                                <option>Out of Stock</option>
+                                                <option value="instock">In Stock</option>
+                                                <option value="outofstock">Out of Stock</option>
                                             </select>
                                         </div>
                                     </div>

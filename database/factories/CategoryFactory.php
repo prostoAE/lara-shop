@@ -8,15 +8,13 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
  */
-class CategoryFactory extends Factory
-{
+class CategoryFactory extends Factory {
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    public function definition()
-    {
+    public function definition() {
         return [
             'name' => $this->faker->words(2, true),
             'slug' => Str::slug($this->faker->words(2, true), '-'),

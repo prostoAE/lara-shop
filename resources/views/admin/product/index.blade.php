@@ -42,45 +42,52 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Category id</th>
-                                            <th>Regular price</th>
-                                            <th>Sale price</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($products as $product)
-                                            @php /** @var \App\Models\Product $product */ @endphp
+                                    <div class="row">
+                                        <table id="example2" class="table table-bordered table-hover">
+                                            <thead>
                                             <tr>
-                                                <td>{{$product->id}}</td>
-                                                <td>{{$product->name}}</td>
-                                                <td>{{$product->category_id}}</td>
-                                                <td>{{$product->regular_price}}</td>
-                                                <td>{{$product->sale_price}}</td>
-                                                <td>
-                                                    <a href="{{route('product.edit', $product)}}" type="button" class="btn btn-block btn-outline-warning btn-xs">
-                                                        Edit
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <form action="{{route('product.delete', $product)}}" method="POST">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
-                                                            Delete
-                                                        </button>
-                                                    </form>
-                                                </td>
+                                                <th>Id</th>
+                                                <th>Name</th>
+                                                <th>Category id</th>
+                                                <th>Regular price</th>
+                                                <th>Sale price</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($products as $product)
+                                                @php /** @var \App\Models\Product $product */ @endphp
+                                                <tr>
+                                                    <td>{{$product->id}}</td>
+                                                    <td>{{$product->name}}</td>
+                                                    <td>{{$product->category_id}}</td>
+                                                    <td>{{$product->regular_price}}</td>
+                                                    <td>{{$product->sale_price}}</td>
+                                                    <td>
+                                                        <a href="{{route('product.edit', $product)}}" type="button" class="btn btn-block btn-outline-warning btn-xs">
+                                                            Edit
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <form action="{{route('product.delete', $product)}}" method="POST">
+                                                            @method('DELETE')
+                                                            @csrf
+                                                            <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            {{$products->links()}}
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

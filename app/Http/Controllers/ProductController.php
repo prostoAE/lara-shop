@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller {
     /**
@@ -13,7 +14,7 @@ class ProductController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $products = Product::all();
+        $products = Product::orderByDesc('id')->paginate(10);
         return view('admin.product.index', compact('products'));
     }
 
@@ -38,6 +39,7 @@ class ProductController extends Controller {
 
         $this->validate($request, [
             'name' => 'required',
+            'slug' => 'nullable',
             'description' => 'required',
             'product_thumbnail' => 'nullable',
             'category_id' => 'nullable',
@@ -50,7 +52,10 @@ class ProductController extends Controller {
         ]);
 
         $product = new Product($request->all());
-        dd($product);
+        $product->slug = Str::slug($request->get('name'), '-');
+        $product->save();
+
+        return redirect()->route('product.index');
     }
 
     /**
@@ -71,7 +76,8 @@ class ProductController extends Controller {
      */
     public function edit(Product $product) {
         $categories = Category::all();
-        return view('admin.product.edit', compact('product', 'categories'));
+        $product_image = $product->images()->where('main_thumb', '=', 1)->first();
+        return view('admin.product.edit', compact('product', 'categories', 'product_image'));
     }
 
     /**
