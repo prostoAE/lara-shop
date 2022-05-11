@@ -12,9 +12,9 @@ Route::get('/product', function () {
 });
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/dashboard', [ProductController::class, 'index']);
-    Route::get('/add-product', [ProductController::class, 'create'])->name('product.add');
-    Route::get('/edit-product', function () {
-        return view('admin.product.edit');
-    })->name('product.edit');
+    Route::get('/dashboard', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/product/add', [ProductController::class, 'create'])->name('product.add');
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::delete('/product/{product}/delete', [ProductController::class, 'destroy'])->name('product.delete');
 });

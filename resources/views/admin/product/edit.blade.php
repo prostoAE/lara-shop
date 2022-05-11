@@ -38,15 +38,16 @@
                         </div>
                         <!-- /.card-header -->
                         <form action="#">
+                            @php /** @var \App\Models\Product $product */ @endphp
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Product name</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                    <input value="{{$product->name}}" type="email" class="form-control" id="exampleInputEmail1" placeholder="Product name">
                                 </div>
                                 <div class="form-group">
                                     <label for="summernote">Description</label>
                                     <textarea id="summernote">
-                                    Place <em>some</em> <u>text</u> <strong>here</strong>
+                                        {{$product->description}}
                                     </textarea>
                                 </div>
                                 <div class="form-group">
@@ -126,19 +127,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputRegularPrice">Regular price</label>
-                                            <input type="number" class="form-control" id="inputRegularPrice" placeholder="Price">
+                                            <input value="{{$product->regular_price}}" type="number" class="form-control" id="inputRegularPrice" placeholder="Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputSalePrice">Sale price</label>
-                                            <input type="number" class="form-control" id="inputSalePrice" placeholder="Price">
+                                            <input value="{{$product->sale_price}}" type="number" class="form-control" id="inputSalePrice" placeholder="Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputQuantity">Quantity</label>
-                                            <input type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
+                                            <input value="{{$product->quantity}}" type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
                                         </div>
                                     </div>
                                 </div>
@@ -148,13 +149,9 @@
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select class="form-control select2" style="width: 100%;">
-                                                <option selected="selected">Alabama</option>
-                                                <option>Alaska</option>
-                                                <option>California</option>
-                                                <option>Delaware</option>
-                                                <option>Tennessee</option>
-                                                <option>Texas</option>
-                                                <option>Washington</option>
+                                                @foreach($categories as $category)
+                                                    <option @if($category->id == $product->category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -178,8 +175,13 @@
                                         <div class="form-group">
                                             <label>Stock status</label>
                                             <select class="select2" data-placeholder="Select a stock status" style="width: 100%;">
-                                                <option>In Stock</option>
-                                                <option>Out of Stock</option>
+                                                @if($product->stock_status == 'instock')
+                                                    <option selected>In Stock</option>
+                                                    <option>Out of Stock</option>
+                                                @else
+                                                    <option>In Stock</option>
+                                                    <option selected>Out of Stock</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>

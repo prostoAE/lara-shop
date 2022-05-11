@@ -64,27 +64,22 @@
                                                 <td>{{$product->regular_price}}</td>
                                                 <td>{{$product->sale_price}}</td>
                                                 <td>
-                                                    <a href="{{route('product.edit', $product->id)}}" type="button" class="btn btn-block btn-outline-warning btn-xs">
+                                                    <a href="{{route('product.edit', $product)}}" type="button" class="btn btn-block btn-outline-warning btn-xs">
                                                         Edit
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <button type="button" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
-                                                        Delete
-                                                    </button>
+                                                    <form action="{{route('product.delete', $product)}}" method="POST">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
                                         </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
-                                        </tr>
-                                        </tfoot>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
