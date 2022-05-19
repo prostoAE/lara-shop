@@ -37,24 +37,35 @@
                             <h3 class="card-title">Add new product</h3>
                         </div>
                         <!-- /.card-header -->
-                        <form action="#">
+                        <form action="{{route('product.update', $product)}}" method="post" enctype="multipart/form-data">
+                            @method('put')
+                            @csrf
                             @php /** @var \App\Models\Product $product */ @endphp
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Product name</label>
-                                    <input value="{{$product->name}}" type="email" class="form-control" id="exampleInputEmail1" placeholder="Product name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="summernote">Description</label>
-                                    <textarea id="summernote">
-                                        {{$product->description}}
-                                    </textarea>
+                                    <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="Product name" value="{{$product->name}}">
                                 </div>
                                 <div class="form-group">
                                     <label>Product Foto</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
+                                            <input type="file" name="product_thumbnail" class="custom-file-input" id="productFoto" value="{{$product_image}}">
+                                            <label class="custom-file-label" for="productFoto">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="summernote">Description</label>
+                                    <textarea id="summernote" name="description">
+                                        {{$product->description}}
+                                    </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gallery</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="gallery[]" class="custom-file-input" id="exampleInputFile" multiple value="{{old('gallery')}}">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
@@ -74,19 +85,19 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputRegularPrice">Regular price</label>
-                                            <input value="{{$product->regular_price}}" type="number" class="form-control" id="inputRegularPrice" placeholder="Price">
+                                            <input type="number" value="{{$product->regular_price}}" name="regular_price" class="form-control" id="inputRegularPrice" placeholder="Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputSalePrice">Sale price</label>
-                                            <input value="{{$product->sale_price}}" type="number" class="form-control" id="inputSalePrice" placeholder="Price">
+                                            <input type="number" value="{{$product->sale_price}}" name="sale_price" class="form-control" id="inputSalePrice" placeholder="Price">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="inputQuantity">Quantity</label>
-                                            <input value="{{$product->quantity}}" type="number" class="form-control" id="inputQuantity" placeholder="Quantity">
+                                            <input type="number" value="{{$product->quantity}}" name="quantity" class="form-control" id="inputQuantity" placeholder="Quantity">
                                         </div>
                                     </div>
                                 </div>
@@ -95,9 +106,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select class="form-control select2" style="width: 100%;">
+                                            <select name="category_id" class="form-control select2" style="width: 100%;">
                                                 @foreach($categories as $category)
-                                                    <option @if($category->id == $product->category->id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -106,7 +117,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Tags</label>
-                                            <select class="select2" multiple="multiple" data-placeholder="Select a Tags" style="width: 100%;">
+                                            <select name="tags[]" class="select2" multiple="multiple" data-placeholder="Select a Tags" style="width: 100%;">
                                                 <option>Alabama</option>
                                                 <option>Alaska</option>
                                                 <option>California</option>
@@ -121,21 +132,16 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Stock status</label>
-                                            <select class="select2" data-placeholder="Select a stock status" style="width: 100%;">
-                                                @if($product->stock_status == 'instock')
-                                                    <option selected>In Stock</option>
-                                                    <option>Out of Stock</option>
-                                                @else
-                                                    <option>In Stock</option>
-                                                    <option selected>Out of Stock</option>
-                                                @endif
+                                            <select name="stock_status" class="select2" data-placeholder="Select a stock status" style="width: 100%;">
+                                                <option value="instock">In Stock</option>
+                                                <option value="outofstock">Out of Stock</option>
                                             </select>
                                         </div>
                                     </div>
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
-                                <button class="btn btn-primary">Save product</button>
+                                <button class="btn btn-primary">Update product</button>
                             </div>
                         </form>
                         <!-- /.card-body -->

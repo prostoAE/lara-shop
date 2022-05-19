@@ -29,4 +29,19 @@ class Product extends Model {
     public function images() {
         return $this->hasMany(Gallery::class);
     }
+
+    public function edit($fields) {
+        $this->fill($fields);
+        $this->save();
+
+        foreach ($this->images as $image) {
+            $image->removeImage();
+            $image->deleteOrFail();
+        }
+
+        Gallery::addThumbnail($fields, $this->id);
+        foreach ($fields as $File) {
+            Gallery::add($File, $this->id);
+        }
+    }
 }

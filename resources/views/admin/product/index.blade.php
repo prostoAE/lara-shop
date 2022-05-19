@@ -70,7 +70,7 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <form action="{{route('product.delete', $product)}}" method="POST">
+                                                        <form action="{{route('product.destroy', $product)}}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" onclick="return confirm('are you sure?')" class="btn btn-block btn-outline-danger btn-xs">
