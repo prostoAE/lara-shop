@@ -12,6 +12,55 @@
 
 namespace App\Models{
 /**
+ * App\Models\Category
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $slug
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Product[] $products
+ * @property-read int|null $products_count
+ * @method static \Database\Factories\CategoryFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ */
+	class Category extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Gallery
+ *
+ * @property int $id
+ * @property int $product_id
+ * @property string $image
+ * @property int|null $main_thumb
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Product|null $product
+ * @method static \Database\Factories\GalleryFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereMainThumb($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereUpdatedAt($value)
+ */
+	class Gallery extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Product
  *
  * @property int $id
@@ -25,6 +74,9 @@ namespace App\Models{
  * @property string $stock_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Category|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Gallery[] $images
+ * @property-read int|null $images_count
  * @method static \Database\Factories\ProductFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
